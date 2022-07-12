@@ -21,10 +21,10 @@ fn main() {
         .get_matches();
 
     let text: Vec<String> = matches
-        .get_many("text")
+        .get_many::<String>("text")
         .expect("`text`is required")
         .cloned()
         .collect();
-    let omit_newline = matches.is_present("omit_newline");
+    let omit_newline = matches.contains_id("omit_newline");
     print!("{}{}", text.join(" "), if omit_newline { "" } else { "\n" });
 }
